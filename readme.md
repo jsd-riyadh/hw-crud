@@ -1,5 +1,16 @@
 # CRUD Firebase
+> Open index.html and update the firebase data with your own data
 
+```js
+var config = {
+        apiKey: "",
+        authDomain: "",
+        databaseURL: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: ""
+    };
+``` 
 ### Task 1: Complete Update
 - When user clicks edit, populate the form fields
 - Change submit button to update records

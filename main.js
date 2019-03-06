@@ -19,7 +19,7 @@ $(function(){ //must always be here if you use JQuery
 
     resList.on('click', ".delete", function(){
         // $(this).parent().attr("data-id")
-        let id = $(this).parent().data("id")
+        let id = $(this).parent().data("id") // gets parent data-id
 
         db.doc(id).delete()
         // .then()
@@ -29,9 +29,6 @@ $(function(){ //must always be here if you use JQuery
     resList.on('click', ".edit", function(){
         // $(this).parent().attr("data-id")
         let id = $(this).parent().data("id")
-        
-        // let name = 
-        let location = $('input[name=location]').val()
 
         db.doc(id).get().then(res => {
             // console.log(res.data());
@@ -39,10 +36,6 @@ $(function(){ //must always be here if you use JQuery
             $('input[name=name]').val(res.data().name)
             $('input[name=location]').val(res.data().location)
         })
-        // db.doc(id).update({
-
-        // })
-        // .then()
 
     })
 
@@ -80,4 +73,11 @@ $(function(){ //must always be here if you use JQuery
         
     })
 
+    //Update data
+    //id is parent data-id
+    //selector .parent().data("id")
+    // db.doc(id).update({
+
+        // })
+        // .then()
 })
