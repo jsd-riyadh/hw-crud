@@ -4,62 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="main.css" />
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <h2>FireBase Firestore Restaurant Finder</h2>
-    </header>
-    
-    <div id="alert">
-    </div>
-    <div>
-        <div class="res-container">
 
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="formcontainer">
-            <div class="row">
-                <div class="w-50">
-                        <input type="text" name="name" placeholder="name of restuarant">
-                </div>
-                <div class="w-50">
-                        <input type="text" name="location" placeholder="location">
-            
-                </div>
-            </div>
-                
-                
-                <button class="submit">Submit</button>
-        </div>
+    <div class="formcontiner">
+        <input type="text" placeholder="Name of the resturant"name="name">
+        <input type="text" placeholder="Location" name="location">
+        <button class="submit">Submited</button>
     </div>
 
-    
+    <div class="res-container"></div>
 
 
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
     <script>
-        // Initialize Firebase
-    var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        projectId: "",
-        storageBucket: "",
-        messagingSenderId: ""
-    };
-    firebase.initializeApp(config);
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyD4Z-fqVedzUia7-yxgSqiBnQkOPincDYk",
+        authDomain: "moma-595e3.firebaseapp.com",
+        databaseURL: "https://moma-595e3.firebaseio.com",
+        projectId: "moma-595e3",
+        storageBucket: "moma-595e3.appspot.com",
+        messagingSenderId: "175098623394"
+      };
+      firebase.initializeApp(config);
     </script>
-    <script src="main.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>
