@@ -1,65 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="main.css" />
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>firebase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    
+
 </head>
 <body>
-    <header>
-        <h2>FireBase Firestore Restaurant Finder</h2>
-    </header>
-    
-    <div id="alert">
-    </div>
-    <div>
-        <div class="res-container">
-
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="formcontainer">
-            <div class="row">
-                <div class="w-50">
-                        <input type="text" name="name" placeholder="name of restuarant">
-                </div>
-                <div class="w-50">
-                        <input type="text" name="location" placeholder="location">
-            
-                </div>
-            </div>
-                
-                
-                <button class="submit">Submit</button>
-        </div>
-    </div>
-
+  
     
 
 
 
 
+<div class="formcontainer">
+    <input type="text" name="name" placeholder="Name of Restaurant">
+    <input type="text" name="location" placeholder="Location of Restaurant">
+    <button class="submit">Submit</button>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+<div class="res-container">
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
-    <script>
-        // Initialize Firebase
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Scripts -->
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+<script>
+    // Initialize Firebase
     var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        projectId: "",
-        storageBucket: "",
-        messagingSenderId: ""
+    apiKey: "AIzaSyAaV5JE4abzeuIosibFjU0IM6fIr98BFJw",
+    authDomain: "crud-ca826.firebaseapp.com",
+    databaseURL: "https://crud-ca826.firebaseio.com",
+    projectId: "crud-ca826",
+    storageBucket: "crud-ca826.appspot.com",
+    messagingSenderId: "341995942938"
     };
     firebase.initializeApp(config);
-    </script>
-    <script src="main.js"></script>
+</script>  
+<script src="main.js"></script>  
 </body>
 </html>
