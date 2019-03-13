@@ -1,83 +1,94 @@
-$(function(){ //must always be here if you use JQuery
-    
-    let db = firebase.firestore().collection('restaurants')
-    let resList = $('.res-container')
+var db = firebase.firestore().collection('restaurants');
+var update = false;
+var idTobeUpdated = 0;
+$(document).ready(function () {
 
-    db.get()
-    .then(result => {
-        let changes = result.docChanges()//gets array of docs
+    var resList = $(".res-conrainer");
 
-        changes.forEach(res => {
-            console.log(res.doc.data());
-            resList.append(`<li data-id="${res.doc.id}">${res.doc.data().name} - ${res.doc.data().location} <button class="edit">edit</button> <button class="delete">delete</button> </li>`)
+    function getData() {
+        resList.empty();
+        db.get().then(querySnapshot => {
+            querySnapshot.forEach((doc) => {
+                // console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+                let data = doc.data()
+                // console.log(data)
+                resList.append(`
+                <li data-id="${doc.id}">
+                    ${data.name} - ${data.location}
+                    <button class="edit">edit</button>
+                    <button class="delete">delete</button>
+                </li>`)
+            });
+        }).catch(console.log)
+    }
 
-            
-        });
-        
-    }).catch(err => console.log(err))
-
-
-    resList.on('click', ".delete", function(){
-        // $(this).parent().attr("data-id")
-        let id = $(this).parent().data("id") // gets parent data-id
-
+    function writeRestaurantData(name, location) {
+        db.add({
+            name: name,
+            location: location,
+        })
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                getData();
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    }
+    function deleteRestaurantData(id) {
         db.doc(id).delete()
-        // .then()
+            .then(function (docRef) {
+                getData();
+            })
+            .catch(function (error) {
+                console.error("Error deleteing document: ", error);
+            });
+    }
+    function updateRestaurantData(id, name, location) {
+        update = false;
+        db.doc(id).update({
+            name: name,
+            location: location,
+        }).then(function (docRef) {
+            getData();
+        }).catch(function (error) {
+            console.error("Error updating document: ", error);
+        });
+    }
 
-    })
+    getData()
 
-    resList.on('click', ".edit", function(){
-        // $(this).parent().attr("data-id")
-        let id = $(this).parent().data("id")
-
+    resList.on('click', '.delete', function (e) {
+        // console.log( $(this).parent().attr('data-id'))
+        // console.log( $(this).parent().data('id'))
+        let id = $(this).parent().data('id')
+        deleteRestaurantData(id)
+    });
+    resList.on('click', '.edit', function (e) {
+        // console.log( $(this).parent().attr('data-id'))
+        // console.log( $(this).parent().data('id'))
+        update = true;
+        let id = $(this).parent().data('id')
+        idTobeUpdated = id;
         db.doc(id).get().then(res => {
-            // console.log(res.data());
-            
+
             $('input[name=name]').val(res.data().name)
             $('input[name=location]').val(res.data().location)
         })
+        // deleteRestaurantData(id)
+    });
+    $('.submit').click(function (e) {
+        var name = $('input[name=name]').val();
+        var location = $('input[name=location]').val();
+        if (update) {
+            updateRestaurantData(idTobeUpdated, name, location)
+        } else {
+            writeRestaurantData(name, location)
+        }
+    });
+});
 
-    })
 
-    //create data and store to restaurants collection
-    $('.submit').click(function(){
-        
-        let name = $('input[name=name]').val()
-        let location = $('input[name=location]').val()
 
-        console.log(name)
-        console.log(location)
 
-        db.add({
-            name: name,
-            location: location
-        }).then(res =>{
-            resList.append(`<li data-id="${res.id}">${name} - ${location} <button class="edit">edit</button> <button class="delete">delete</button></li>`)
-            
-            //clear the input fields after append
-            $('input[name=name]').val("")
-            $('input[name=location]').val("")
 
-            //alert message
-            $("#alert").css("display", "block")
-            $("#alert").append("Added to List!")
-
-            //set delay 4 seconds then empty alert
-            setInterval(function(){ 
-                $("#alert").css("display", "none")
-                $("#alert").empty() 
-            }, 4000)
-            
-        })
-        
-        
-    })
-
-    //Update data
-    //id is parent data-id
-    //selector .parent().data("id")
-    // db.doc(id).update({
-
-        // })
-        // .then()
-})
