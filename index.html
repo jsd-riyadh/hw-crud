@@ -1,65 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="main.css" />
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Firebase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
 </head>
+
 <body>
-    <header>
-        <h2>FireBase Firestore Restaurant Finder</h2>
-    </header>
-    
-    <div id="alert">
+
+    <div class="formcontainer">
+        <input name="name" type="text" id="name" placeholder="name">
+        <input name="location"  type="text" id="location" placeholder="location">
+
+        <button class="submit">Submit</button>
     </div>
-    <div>
-        <div class="res-container">
-
-        </div>
+    <div class="res-conrainer">
+        
     </div>
-    
-    <div class="container">
-        <div class="formcontainer">
-            <div class="row">
-                <div class="w-50">
-                        <input type="text" name="name" placeholder="name of restuarant">
-                </div>
-                <div class="w-50">
-                        <input type="text" name="location" placeholder="location">
-            
-                </div>
-            </div>
-                
-                
-                <button class="submit">Submit</button>
-        </div>
-    </div>
-
-    
-
-
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+
     <script>
         // Initialize Firebase
-    var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        projectId: "",
-        storageBucket: "",
-        messagingSenderId: ""
-    };
-    firebase.initializeApp(config);
+        var config = {
+            apiKey: "AIzaSyBslaP6Oa7-q1aPaU3aD-8TnR5FpLlkogo",
+            authDomain: "ga-first-68027.firebaseapp.com",
+            databaseURL: "https://ga-first-68027.firebaseio.com",
+            projectId: "ga-first-68027",
+            storageBucket: "ga-first-68027.appspot.com",
+            messagingSenderId: "609625069339"
+        };
+        firebase.initializeApp(config);
     </script>
     <script src="main.js"></script>
+
 </body>
+
 </html>
