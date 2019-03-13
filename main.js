@@ -1,6 +1,6 @@
 $(function(){ //must always be here if you use JQuery
     
-    let db = firebase.firestore().collection('restaurants')
+    let db = firebase.firestore().collection('restaurant')
     let resList = $('.res-container')
 
     db.get()
@@ -17,26 +17,32 @@ $(function(){ //must always be here if you use JQuery
     }).catch(err => console.log(err))
 
 
-    resList.on('click', ".delete", function(){
-        // $(this).parent().attr("data-id")
-        let id = $(this).parent().data("id") // gets parent data-id
-
-        db.doc(id).delete()
-        // .then()
-
+    resList.on("click",".delete",function(){
+        let id=$(this).parent().remove().data("id")
+         console.log(id)
+         db.doc(id).delete()
+         
+        // 
+    
     })
 
-    resList.on('click', ".edit", function(){
+    resList.on('click', ".edit", function () {
         // $(this).parent().attr("data-id")
         let id = $(this).parent().data("id")
 
         db.doc(id).get().then(res => {
             // console.log(res.data());
-            
+
             $('input[name=name]').val(res.data().name)
             $('input[name=location]').val(res.data().location)
-        })
+            $(".submit").replaceWith("<button class='update'>update</button>")
 
+            $(".update").on('click', function () {
+                // let id = $(this).parent().data("id")
+                console.log(id)
+                db.doc(id).post()
+            })
+        })
     })
 
     //create data and store to restaurants collection
