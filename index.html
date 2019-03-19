@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="main.css" />
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <h2>FireBase Firestore Restaurant Finder</h2>
     </header>
-    
+
     <div id="alert">
     </div>
     <div>
@@ -19,29 +21,23 @@
 
         </div>
     </div>
-    
+
     <div class="container">
         <div class="formcontainer">
             <div class="row">
                 <div class="w-50">
-                        <input type="text" name="name" placeholder="name of restuarant">
+                    <input type="text" name="name" placeholder="name of restuarant">
                 </div>
                 <div class="w-50">
-                        <input type="text" name="location" placeholder="location">
-            
+                    <input type="text" name="location" placeholder="location">
+
                 </div>
             </div>
-                
-                
-                <button class="submit">Submit</button>
+
+
+            <button class="submit">Submit</button>
         </div>
     </div>
-
-    
-
-
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -50,16 +46,18 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
     <script>
         // Initialize Firebase
-    var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        projectId: "",
-        storageBucket: "",
-        messagingSenderId: ""
-    };
-    firebase.initializeApp(config);
+        var config = {
+            apiKey: "AIzaSyAtt22yiA-M6EsjPABwhP3xO4A6lU08U6c",
+            authDomain: "crud-ef241.firebaseapp.com",
+            databaseURL: "https://crud-ef241.firebaseio.com",
+            projectId: "crud-ef241",
+            storageBucket: "crud-ef241.appspot.com",
+            messagingSenderId: "478681882568"
+        };
+
+        firebase.initializeApp(config);
     </script>
     <script src="main.js"></script>
 </body>
+
 </html>
